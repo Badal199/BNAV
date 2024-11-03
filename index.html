@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hacker Popup UI - Period Change Result</title>
+    <style>
+        body {
+            font-family: 'Courier New', Courier, monospace;
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: lime;
+            background: black;
+        }
+
+        /* Hacker-style Background Animation */
+        .hacker-background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: black;
+            z-index: -1;
+        }
+
+        .hacker-code {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            color: lime;
+            font-size: 16px;
+            white-space: nowrap;
+            overflow: hidden;
+            opacity: 0.7;
+        }
+
+        .hacker-code span {
+            display: block;
+            animation: scroll 10s linear infinite;
+        }
+
+        /* Code Scrolling Animation */
+        @keyframes scroll {
+            0% {
+                transform: translateY(100%);
+            }
+            100% {
+                transform: translateY(-100%);
+            }
+        }
+
+        /* Popup (Modal) Styles */
+        .modal {
+            display: none; /* Hidden by default */
+            position: fixed;
+            z-index: 10;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.85); /* Black background with opacity */
+            backdrop-filter: blur(5px); /* Slight blur for hacker effect */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal-content {
+            background-color: rgba(0, 0, 0, 0.9);
+            border: 3px solid lime;
+            border-radius: 10px;
+            width: 80%;
+            max-width: 500px;
+            text-align: center;
+            color: lime;
+            padding: 20px;
+            box-shadow: 0 0 20px lime, 0 0 40px lime, 0 0 60px lime;
+            animation: pulseGlow 2s infinite alternate;
+        }
+
+        /* Glowing Effect for Popup */
+        @keyframes pulseGlow {
+            from {
+                box-shadow: 0 0 20px lime, 0 0 40px lime, 0 0 60px lime;
+            }
+            to {
+                box-shadow: 0 0 40px lime, 0 0 80px lime, 0 0 120px lime;
+            }
+        }
+
+        /* Close Button */
+        .close-btn {
+            background-color: lime;
+            color: black;
+            padding: 10px 20px;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+            font-size: 1.2rem;
+            margin-top: 20px;
+        }
+
+        .close-btn:hover {
+            background-color: darkgreen;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Hacker-style Background -->
+    <div class="hacker-background">
+        <div class="hacker-code">
+            <span>&gt; Connecting to server...</span>
+            <span>&gt; DEVICE SERVER Connect</span>
+            <span>&gt; BN LAST KING HACK ...</span>
+            <span>&gt;BN LAST KING Server status: Connected</span>
+            <span>&gt; Downloading payload...</span>
+            <span>&gt; BN LAST KING @BN_OWNER: Active</span>
+            <span>&gt; game hack database !</span>
+            <span>&gt; Executing exploit...</span>
+            <span>&gt; BN LAST KING ONLINE SERVER.</span>
+            <span>&gt; Exiting...</span>
+        </div>
+    </div>
+
+    <!-- Hacker-style Modal Popup -->
+    <div id="resultModal" class="modal">
+        <div class="modal-content">
+            <h2>Result</h2>
+            <p id="modalResult">SMALL</p>
+            <button class="close-btn" id="closeModal">Close</button>
+        </div>
+    </div>
+
+    <script>
+        const resultsPattern = ["SMALL", "BIG", "SMALL", "BIG", "BIG", "SMALL", "BIG", "SMALL", "BIG", "SMALL"];
+        let periodNumber = 0;
+        let resultIndex = 0;
+        let modal = document.getElementById("resultModal");
+        let closeModalButton = document.getElementById("closeModal");
+        let modalResult = document.getElementById("modalResult");
+
+        // Function to show the popup with the result
+        function showResultPopup(result) {
+            modalResult.innerText = result;
+            modal.style.display = "block";
+        }
+
+        // Function to close the popup
+        closeModalButton.onclick = function() {
+            modal.style.display = "none";
+        }
+
+        // Function to update period and show random result in popup
+        function updatePeriod() {
+            periodNumber++;
+            resultIndex = periodNumber % resultsPattern.length;
+            let result = resultsPattern[resultIndex];
+            showResultPopup(result);
+        }
+
+        // Update every 30 seconds (change period and show result)
+        setInterval(updatePeriod, 30000); // 30 seconds interval
+    </script>
+</body>
+</html>
+
